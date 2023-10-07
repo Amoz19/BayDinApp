@@ -4,7 +4,10 @@ module.exports = {
   theme: {
     extend: {
       gridTemplateColumns: {
-        table: "100px, 1fr",
+        latop: "100px, 1fr",
+      },
+      colors: {
+        white: "whitesmoke",
       },
     },
   },

@@ -1,8 +1,6 @@
-// import { useState } from "react";
-import { useLocation, useNavigate, Link } from "react-router-dom";
 
+import { useLocation, useNavigate } from "react-router-dom";
 import data from "../service/data";
-
 
 interface Answer {
   questionNo: number,
@@ -10,59 +8,44 @@ interface Answer {
   answerResult: string
 }
 
-
-
 const PickRandomNumber = () => {
   const navigate = useNavigate();
 
-  const randomNumbers: string[] = data.numberList;
+  const randomNumbers = data.numberList;
   const answers: Answer[] = data.answers;
-
 
   const location = useLocation();
   const { questionName, questionNumber } = location.state;
-  const answerNumber: number = Math.floor((Math.random() * 10) + 1);
 
 
-  const handleClick = () => {
+  const handleClick = (answernumber: number) => {
     answers.filter(answer => {
-      if (answer.answerNo == answerNumber && answer.questionNo == questionNumber) {
+      if (answer.answerNo == answernumber && answer.questionNo == questionNumber) {
         navigate('/result', { state: { answer: answer.answerResult } });
-
-
       }
     })
-
   }
 
-
   return (
-    <div className="flex flex-col items-center">
-      <h1>{questionName}</h1>
-      <div className="grid grid-cols-9 w-1/6  bg-blue-900">
-        {
-          randomNumbers.map((number, index) => (
-            <div className="flex" key={index}>
-              <button onClick={handleClick}>
-                {number}
-
-              </button>
-
-
-            </div>
-          ))}
+    <div className="h-screen flex flex-col items-center justify-center bg-slate-900">
+      <h1 className="bg-slate-700 text-white p-2 rounded">{questionName}</h1>
+      <div className="grid grid-cols-9 w-3/6  bg-slate-800 text-white mb-3">
+        {randomNumbers.map((randomNumber, index) => (
+          <button
+            key={index}
+            onClick={() => handleClick(randomNumber.key)}
+            className="p-5 border border-zinc-100"
+          >
+            {randomNumber.value}
+          </button>
+        ))}
       </div>
-      <button onClick={() => navigate('/')}>နောက်သို့</button>
-      {/* <p>{result}</p> */}
+      <button
+        onClick={() => navigate('/')}
+        className="bg-red-900 text-white py-1 px-3 rounded-3xl"
+      >နောက်သို့</button>
 
     </div>
-
-
-
-
-
-
-
   );
 };
 
