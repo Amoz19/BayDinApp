@@ -40,6 +40,7 @@ const QuestionPage = () => {
     }
 
     const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        event.preventDefault();
         setCurrentPage(value);
     };
 
