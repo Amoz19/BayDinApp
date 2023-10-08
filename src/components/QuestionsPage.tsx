@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import data from '../service/data'
 
 import { useNavigate } from 'react-router-dom';
@@ -14,9 +14,12 @@ const QuestionPage = () => {
     const [query, setQuery] = useState<string>('')
     const questions: Questions[] = data.questions;
 
-    const filteredItems = questions.filter(question => {
-        return question.questionName.includes(query)
-    })
+    const filteredItems = useMemo(() => {
+        return questions.filter(question => {
+            return question.questionName.includes(query);
+        });
+    }, [questions, query]);
+
 
     const navigator = useNavigate();
 
