@@ -27,14 +27,14 @@ const PickRandomNumber = () => {
   }
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center bg-slate-900">
-      <h1 className="bg-slate-700 text-white p-2 rounded">{questionName}</h1>
-      <div className="grid grid-cols-9 w-3/6  bg-slate-800 text-white mb-3">
+    <div className="h-screen flex flex-col items-center justify-center bg-slate-900 px-5">
+      <h1 className="bg-slate-700 text-white p-2 rounded text-center">မေးခွန်း - {questionName}</h1>
+      <div className="grid grid-cols-9 lg:w-3/6  bg-slate-800 text-white mb-3">
         {randomNumbers.map((randomNumber, index) => (
           <button
             key={index}
             onClick={() => handleClick(randomNumber.key)}
-            className="p-5 border border-zinc-100"
+            className="p-2 lg:p-5 border border-zinc-100"
           >
             {randomNumber.value}
           </button>

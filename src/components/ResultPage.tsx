@@ -6,12 +6,13 @@ const ResultPage = () => {
     const navigate = useNavigate();
     const { answer } = location.state;
     return (
-        <div className="h-screen flex flex-col justify-center items-center bg-slate-900">
-            <p className="bg-white p-2 rounded-md">{answer}</p>
+        <div className="h-screen flex flex-col justify-center items-center bg-slate-900 px-5">
+
+            <p className="bg-white rounded-md text-center py-3 px-1">အဖြေ - {answer}</p>
             <button
                 onClick={() => navigate('/')}
                 className="bg-red-900 text-white py-1 px-3 rounded-3xl mt-5"
-            >နောက်သို့</button>
+            >ပြန်မေးမည်</button>
         </div>
 
 

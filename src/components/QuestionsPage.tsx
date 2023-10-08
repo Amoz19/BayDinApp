@@ -23,7 +23,7 @@ const QuestionPage = () => {
 
 
     const [currentPage, setCurrentPage] = useState(1);
-    const questionPerPage = 8;
+    const questionPerPage = 5;
 
     const lastPostIndex = currentPage * questionPerPage;
     const firstPostIndex = lastPostIndex - questionPerPage;
@@ -47,22 +47,23 @@ const QuestionPage = () => {
 
 
     return (
-        <div className='bg-slate-800 h-screen flex justify-center items-center'>
+        <div className='bg-slate-800 flex flex-col justify-center items-center px-3'>
+            <h1 className='text-3xl my-3 text-white'>လက်ထောက်ဗေဒင်</h1>
             <div className='md:w-3/4 mx-2 md:mx-auto ' >
                 <input
                     type='text'
                     value={query}
                     onChange={e => setQuery(e.target.value)}
-                    className='w-full p-2 rounded-3xl border-2 border-slate-400 focus:outline-none mb-3'
+                    className='w-full p-2 rounded-3xl border-2 border-slate-400 focus:outline-none my-3'
                     placeholder='နမူနာ _ အဝေးရောက်နေသူ၏ ကောင်းခြင်း/ဆိုးခြင်းနှင့် ဆိုင်သော အဟော။' />
 
                 {currentBlogs.map(question => (
                     <div key={question.questionNo}
                         onClick={() => handleClick(question.questionName, question.questionNo)}
-                        className='my-2 rounded grid lg:grid-cols-latop leading-10 bg-slate-300 text-zinc-900'
+                        className='my-3 w-full p-4 lg:p-8 m-auto rounded grid lg:grid-cols-latop bg-slate-300 text-zinc-900'
                     >
-                        <button>{question.questionNo}</button>
-                        <button className='text-center lg:text-left'>{question.questionName}</button>
+                        <button className='border-b-2 lg:border-b-0 lg:border-r-2 border-slate-700 flex justify-center'>{question.questionNo}</button>
+                        <button className='text-center lg:px-5 lg:text-left'>{question.questionName}</button>
                     </div>
                 ))}
 
@@ -71,7 +72,7 @@ const QuestionPage = () => {
                     page={currentPage}
                     onChange={handlePageChange}
                     color='primary'
-                    className=" bg-slate-300 grid place-items-center mt-4"
+                    className=" grid place-items-center mt-4"
                 />
             </div>
         </div>
