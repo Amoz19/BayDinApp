@@ -50,7 +50,7 @@ const QuestionPage = () => {
 
 
     return (
-        <div className='bg-slate-800 flex flex-col justify-center items-center px-3'>
+        <div className='h-screen  bg-slate-800 flex flex-col justify-center items-center px-3 relative'>
             <h1 className='text-3xl my-3 text-white'>လက်ထောက်ဗေဒင်</h1>
             <div className='md:w-3/4 mx-2 md:mx-auto ' >
                 <input
@@ -63,7 +63,7 @@ const QuestionPage = () => {
                 {currentBlogs.map(question => (
                     <div key={question.questionNo}
                         onClick={() => handleClick(question.questionName, question.questionNo)}
-                        className='my-3 w-full p-4 lg:p-8 m-auto rounded grid lg:grid-cols-latop bg-slate-300 text-zinc-900'
+                        className='my-3 w-full p-4 m-auto rounded grid lg:grid-cols-latop bg-slate-300 text-zinc-900'
                     >
                         <button className='border-b-2 lg:border-b-0 lg:border-r-2 border-slate-700 flex justify-center'>{question.questionNo}</button>
                         <button className='text-center lg:px-5 lg:text-left'>{question.questionName}</button>
@@ -75,7 +75,7 @@ const QuestionPage = () => {
                     page={currentPage}
                     onChange={handlePageChange}
                     color='primary'
-                    className=" grid place-items-center mt-4"
+                    className=""
                 />
             </div>
         </div>
