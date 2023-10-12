@@ -57,7 +57,7 @@ const QuestionPage = () => {
                     type='text'
                     value={query}
                     onChange={e => setQuery(e.target.value)}
-                    className='w-full p-2 rounded-3xl border-2 border-slate-400 focus:outline-none my-3'
+                    className='w-full p-2 rounded-3xl border-2 border-slate-400 focus:outline-none my-3 text-black'
                     placeholder='နမူနာ _ အဝေးရောက်နေသူ၏ ကောင်းခြင်း/ဆိုးခြင်းနှင့် ဆိုင်သော အဟော။' />
 
                 {currentBlogs.map(question => (
@@ -70,13 +70,12 @@ const QuestionPage = () => {
                     </div>
                 ))}
 
-                <Pagination
+                {filteredItems.length ? <Pagination
                     count={pageCount}
                     page={currentPage}
                     onChange={handlePageChange}
                     color='primary'
-                    className=""
-                />
+                /> : <p className='text-center font-bold'>Not found 🧭</p>}
             </div>
         </div>
 
